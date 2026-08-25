@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: my-garage-app
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydb
+    username: ${DB_USERNAME:my-postgres}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+  security:
+      user:
+        name: admin
+        password: password123
+
+  app:
+    jwt:
+      secret: ${JWT_SECRET}
+      expiration-ms: 86400000
